@@ -8,24 +8,19 @@
       "icon": "/images/icons/links/0/icon.svg"
     },
     {
-      "label": "Social",
-      "href": "#",
-      "icon": "/images/icons/links/1/icon.svg"
-    },
-    {
       "label": "GitHub",
       "href": "https://github.com/donniethurman",
-      "icon": "/images/icons/links/2/icon.svg"
+      "icon": "/images/icons/links/1/icon.svg"
     },
     {
       "label": "Contact",
       "href": "mailto:donniethurman4@gmail.com",
-      "icon": "/images/icons/links/3/icon.svg"
+      "icon": "/images/icons/links/2/icon.svg"
     },
     {
       "label": "Instagram",
       "href": "https://www.instagram.com/_dtdesigns/",
-      "icon": "/images/icons/links/4/icon.svg"
+      "icon": "/images/icons/links/3/icon.svg"
     }
   ]
 }
