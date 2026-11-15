@@ -24,12 +24,31 @@ const avatar = profile.avatar ?? 'https://assets.codepen.io/16425/image-placehol
 {/* Layout provides <html>, <head> and the styled <body>; the <title> is passed as a prop. */}
 <Layout title={`${profile.name} — Links`}>
   {/* A single narrow, centred column that works on phones and wide screens alike. */}
-  <main class="mx-auto max-w-md px-6 py-16 text-center">
-    {/* alt="" marks the avatar as decorative: the name right below already identifies the person. */}
-    <img src={avatar} alt="" class="mx-auto size-full" />
-    <h1 class="mt-4 text-xl font-semibold">{profile.name}</h1>
-    <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">{profile.bio}</p>
 
+  <div class="star-background" aria-hidden="true"></div>
+
+<!-- Your existing profile and links -->
+  <main class="ornament-frame relative z-10 mx-auto max-w-md px-6 py-16 text-center">
+    <span class="corner-star star-top-left">✦</span>
+    <span class="corner-star star-top-right">✦</span>
+    <span class="corner-star star-bottom-left">✦</span>
+    <span class="corner-star star-bottom-right">✦</span>
+    {/* alt="" marks the avatar as decorative: the name right below already identifies the person. */}
+    <div class="flex items-center gap-3">
+  <h1 class="font-asimovian text-6xl tracking-wide text-left animated-name">
+    {profile.name}
+  </h1>
+
+  <div class="relative -rotate-3 translate-y-[-5px] translate-x-[-20px]">
+    <img
+      src={avatar}
+      alt=""
+      class="w-47 h-35 object-cover rounded-sm"
+    />
+  </div>
+</div>
+
+  <p class="text-justify whitespace-pre-line leading-relaxed whitespace-pre-line mt-1 text-sm text-neutral-500 dark:text-neutral-400">{profile.bio}</p>
     {/*
       One <li> per link, in the order set in the admin. The shared `.link`
       class (src/styles/global.css) holds the button styles, so they live in
@@ -48,5 +67,49 @@ const avatar = profile.avatar ?? 'https://assets.codepen.io/16425/image-placehol
         </li>
       ))}
     </ul>
+    <script>
+  const colors = ["#FFECD5", "#E06C9F", "#C0C0C0"];
+
+  document.addEventListener("mousemove", (e) => {
+    const sparkle = document.createElement("span");
+
+    sparkle.className = "sparkle";
+    sparkle.textContent = "✦";
+
+    sparkle.style.left = `${e.clientX}px`;
+    sparkle.style.top = `${e.clientY}px`;
+    sparkle.style.color =
+      colors[Math.floor(Math.random() * colors.length)];
+
+    document.body.appendChild(sparkle);
+
+    setTimeout(() => {
+      sparkle.remove();
+    }, 700);
+  });
+</script>
+<script>
+  const background = document.querySelector(".star-background");
+
+  if (background) {
+    const starCount = 85;
+
+    for (let i = 0; i < starCount; i++) {
+      const star = document.createElement("span");
+
+      star.className = "twinkle-star";
+      star.textContent = Math.random() > 0.6 ? "✦" : "·";
+
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.top = `${Math.random() * 100}%`;
+
+      star.style.fontSize = `${Math.random() * 10 + 5}px`;
+      star.style.animationDuration = `${Math.random() * 5 + 3}s`;
+      star.style.animationDelay = `${Math.random() * -8}s`;
+
+      background.appendChild(star);
+    }
+  }
+</script>
   </main>
 </Layout>
